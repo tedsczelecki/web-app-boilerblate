@@ -1,0 +1,59 @@
+import React from 'react';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Link,
+  VStack,
+} from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
+import { PasswordField } from 'components/FormElements';
+
+const Login = () => {
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+
+  return (
+    <Box>
+      <Heading size="xl" mb={2} color="blue.400">
+        Welcome back
+      </Heading>
+      <Heading size="md" mb={8}>
+        Sign in to continue or{' '}
+        <Link
+          as={RouterLink}
+          to="/register"
+          color="blue.400"
+          textDecoration="underline"
+        >
+          register
+        </Link>
+      </Heading>
+      <Box width="100%" backgroundColor="gray.700" p="4" borderRadius="md">
+        <VStack spacing="6">
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input name="email" type="email" autoComplete="email" required />
+          </FormControl>
+          <PasswordField />
+          <Button
+            type="submit"
+            colorScheme="blue"
+            size="lg"
+            fontSize="md"
+            width="100%"
+          >
+            Log in
+          </Button>
+        </VStack>
+      </Box>
+    </Box>
+  );
+};
+
+export default Login;
