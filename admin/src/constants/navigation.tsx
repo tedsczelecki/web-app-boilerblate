@@ -1,19 +1,15 @@
-import { MdDomain, MdGroup, MdSettings } from 'react-icons/md';
+import { MdDescription, MdSettings } from 'react-icons/md';
 import { navigationGroup } from '../types';
+import { POSTS_PATH } from 'constants/routePaths';
 
 export const sidebarNavigation: navigationGroup[] = [
   {
     label: 'Your business',
     links: [
       {
-        href: '/companies',
-        icon: MdDomain,
-        label: 'Companies',
-      },
-      {
-        href: '/employees',
-        icon: MdGroup,
-        label: 'Employees',
+        href: POSTS_PATH,
+        icon: MdDescription,
+        label: 'Posts',
       },
     ],
   },

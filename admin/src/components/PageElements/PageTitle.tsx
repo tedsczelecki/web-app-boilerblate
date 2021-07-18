@@ -1,16 +1,44 @@
 import React from 'react';
-import { Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Divider,
+  Heading,
+  HStack,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { BreadCrumb } from '@types';
+import { Link } from 'react-router-dom';
 
 type pageTitleProps = {
-  actions?: React.FC;
+  actions?: React.ReactElement;
+  breadcrumb?: BreadCrumb[];
   subText?: string;
   text?: string;
 };
 
-const PageTitle = ({ actions, subText, text }: pageTitleProps) => {
+const PageTitle = ({ actions, breadcrumb, subText, text }: pageTitleProps) => {
   return (
-    <>
-      <HStack pb="3">
+    <VStack width="100%" alignItems="start">
+      {breadcrumb && (
+        <Breadcrumb
+          spacing={3}
+          separator={<ChevronRightIcon color="gray.500" />}
+        >
+          {breadcrumb.map(({ link, label }) => (
+            <BreadcrumbItem key={label}>
+              <BreadcrumbLink as={Link} to={link}>
+                {label}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          ))}
+        </Breadcrumb>
+      )}
+      <HStack pb="3" justifyContent="space-between" width="100%">
         <Box>
           {text && (
             <Heading size="lg" pb="1">
@@ -22,7 +50,7 @@ const PageTitle = ({ actions, subText, text }: pageTitleProps) => {
         {actions && <Box ml="auto">{actions}</Box>}
       </HStack>
       <Divider />
-    </>
+    </VStack>
   );
 };
 

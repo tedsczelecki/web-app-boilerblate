@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "lib": ["esnext"],
+    "strict": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "../admin/src/@types"
+    ],
+  },
+  "include": ["src/**/*"]
+}

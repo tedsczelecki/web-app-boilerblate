@@ -16,13 +16,15 @@ import * as React from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 
 type PasswordFieldProps = InputProps & {
+  onChange?: (value: string) => void;
   showForgotPassword?: boolean;
+  value?: string;
 };
 
 export const PasswordField = React.forwardRef<
   HTMLInputElement,
   PasswordFieldProps
->(({ showForgotPassword }, ref) => {
+>(({ onChange = () => {}, showForgotPassword, value }, ref) => {
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -71,6 +73,8 @@ export const PasswordField = React.forwardRef<
           type={isOpen ? 'text' : 'password'}
           autoComplete="current-password"
           required
+          value={value}
+          onChange={evt => onChange(evt.target.value)}
         />
       </InputGroup>
     </FormControl>

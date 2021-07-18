@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Heading,
-  InputGroup,
-  HStack,
-  Image,
-  Input,
-  Text,
-  VStack,
-  InputRightElement,
-  Button,
-} from '@chakra-ui/react';
+import { Box, HStack, Image } from '@chakra-ui/react';
 import authBackground from 'images/auth-background.jpg';
 import Logo from '../components/Navigation/Logo';
 

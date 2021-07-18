@@ -1,3 +1,5 @@
+export const TOAST_DURATION = 9000;
+
 export const pageAnimationData = {
   animate: {
     opacity: 1,
@@ -5,13 +7,13 @@ export const pageAnimationData = {
   },
   exit: {
     opacity: 0,
-    y: '16px',
+    y: '8px',
   },
   initial: {
     opacity: 0,
-    y: '16px',
+    y: '8px',
   },
   transition: {
-    duration: 0.35,
+    duration: 0.3,
   },
 };

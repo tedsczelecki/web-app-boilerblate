@@ -20,12 +20,14 @@ import { sidebarNavigation } from 'constants/navigation';
 import { useHistory } from 'react-router-dom';
 import { ChevronDownIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { LIGHT_MODE } from '../../constants';
+import useUser from '../../hooks/useUser';
 
 const Sidebar = () => {
   const history = useHistory();
   const { colorMode, toggleColorMode } = useColorMode();
   const isLightMode = colorMode === LIGHT_MODE;
   const headerColor = useColorModeValue('gray.400', 'gray.600');
+  const me = useUser();
 
   return (
     <VStack
@@ -81,8 +83,8 @@ const Sidebar = () => {
             width="100%"
           >
             <HStack>
-              <Avatar name="Ted Sczelecki" size="xs" />
-              <Text fontSize="sm">Ted Sczelecki</Text>
+              <Avatar name={me?.username || me?.email} size="xs" />
+              <Text fontSize="sm">{me?.username || me?.email}</Text>
             </HStack>
           </MenuButton>
           <MenuList>

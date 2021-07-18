@@ -1,30 +1,37 @@
 import { DashboardPage } from 'pages/Dashboard';
-import { CompaniesPage, EmployeesPage } from 'pages/Company';
+import { PostPage, PostsPage } from 'pages/Posts';
 import { LoginPage, RegisterPage } from 'pages/Auth';
 import { route } from '../types';
+import {
+  DASHBOARD_PATH,
+  LOGIN_PATH,
+  POST_PATH,
+  POSTS_PATH,
+  REGISTER_PATH,
+} from 'constants/routePaths';
 
 export const authenticatedRoutes: route[] = [
   {
-    path: '/',
+    path: DASHBOARD_PATH,
     component: DashboardPage,
   },
   {
-    path: '/companies',
-    component: CompaniesPage,
+    path: POSTS_PATH,
+    component: PostsPage,
   },
   {
-    path: '/employees',
-    component: EmployeesPage,
+    path: `${POST_PATH}/:id?`,
+    component: PostPage,
   },
 ];
 
 export const unauthenticatedRoutes: route[] = [
   {
-    path: '/login',
+    path: LOGIN_PATH,
     component: LoginPage,
   },
   {
-    path: '/register',
+    path: REGISTER_PATH,
     component: RegisterPage,
   },
 ];

@@ -6,8 +6,6 @@ import {
   FormLabel,
   Heading,
   Input,
-  InputGroup,
-  InputRightElement,
   Link,
   VStack,
 } from '@chakra-ui/react';
@@ -15,9 +13,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { PasswordField } from 'components/FormElements';
 
 const Login = () => {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
-
   return (
     <Box>
       <Heading size="xl" mb={2} color="blue.400">
