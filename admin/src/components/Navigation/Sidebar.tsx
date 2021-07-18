@@ -20,7 +20,8 @@ import { sidebarNavigation } from 'constants/navigation';
 import { useHistory } from 'react-router-dom';
 import { ChevronDownIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { LIGHT_MODE } from '../../constants';
-import useUser from '../../hooks/useUser';
+import useUser from 'hooks/useUser';
+import { removeUserToken } from 'utils/storage';
 
 const Sidebar = () => {
   const history = useHistory();
@@ -28,6 +29,13 @@ const Sidebar = () => {
   const isLightMode = colorMode === LIGHT_MODE;
   const headerColor = useColorModeValue('gray.400', 'gray.600');
   const me = useUser();
+
+  const handleLogoutClick = () => {
+    removeUserToken();
+    if (window?.location?.href) {
+      window.location.href = '/';
+    }
+  };
 
   return (
     <VStack
@@ -99,7 +107,7 @@ const Sidebar = () => {
             <MenuItem onClick={() => history.push('/settings')}>
               Settings
             </MenuItem>
-            <MenuItem>Log out</MenuItem>
+            <MenuItem onClick={handleLogoutClick}>Log out</MenuItem>
           </MenuList>
         </Menu>
       </Box>
